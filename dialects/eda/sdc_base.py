@@ -18,6 +18,7 @@ _SDC_DIALECTS: frozenset[str] = frozenset(
     {
         "synopsys-eda-tcl",
         "cadence-eda-tcl",
+        "innovus-eda-tcl",
         "xilinx-eda-tcl",
         "intel-quartus-eda-tcl",
         "mentor-eda-tcl",

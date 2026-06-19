@@ -431,6 +431,7 @@ _EDA_VENDOR_DIALECTS = frozenset(
     {
         "synopsys-eda-tcl",
         "cadence-eda-tcl",
+        "innovus-eda-tcl",
         "xilinx-eda-tcl",
         "intel-quartus-eda-tcl",
         "mentor-eda-tcl",
@@ -443,6 +444,7 @@ _EDA_VENDOR_DIALECTS = frozenset(
 _EDA_TCL_BASE: dict[str, str] = {
     "synopsys-eda-tcl": "tcl8.6",
     "cadence-eda-tcl": "tcl8.6",
+    "innovus-eda-tcl": "tcl8.6",
     "xilinx-eda-tcl": "tcl8.5",
     "intel-quartus-eda-tcl": "tcl8.5",
     "mentor-eda-tcl": "tcl8.5",

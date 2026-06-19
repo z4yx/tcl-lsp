@@ -14,6 +14,7 @@ KNOWN_DIALECTS: frozenset[str] = frozenset(
         "f5-bigip",
         "synopsys-eda-tcl",
         "cadence-eda-tcl",
+        "innovus-eda-tcl",
         "xilinx-eda-tcl",
         "intel-quartus-eda-tcl",
         "mentor-eda-tcl",
@@ -74,6 +75,7 @@ DIALECT_BASE_VERSION: dict[str, str] = {
     # EDA vendor tools embed various Tcl versions.
     "synopsys-eda-tcl": "tcl8.6",
     "cadence-eda-tcl": "tcl8.6",
+    "innovus-eda-tcl": "tcl8.6",
     "xilinx-eda-tcl": "tcl8.5",
     "intel-quartus-eda-tcl": "tcl8.5",
     "mentor-eda-tcl": "tcl8.5",

@@ -799,6 +799,7 @@ body {
     <select id="dialect">
       <option value="synopsys-eda-tcl">Synopsys EDA</option>
       <option value="cadence-eda-tcl">Cadence EDA</option>
+      <option value="innovus-eda-tcl">Innovus</option>
       <option value="xilinx-eda-tcl">Xilinx EDA</option>
       <option value="intel-quartus-eda-tcl">Intel Quartus</option>
       <option value="mentor-eda-tcl">Mentor EDA</option>

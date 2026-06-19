@@ -515,6 +515,7 @@ class TclLspSettings : PersistentStateComponent<TclLspSettings> {
             "f5-bigip" to "F5 BIG-IP",
             "synopsys-eda-tcl" to "Synopsys EDA",
             "cadence-eda-tcl" to "Cadence EDA",
+            "innovus-eda-tcl" to "Innovus",
             "xilinx-eda-tcl" to "Xilinx EDA",
             "intel-quartus-eda-tcl" to "Intel Quartus",
             "mentor-eda-tcl" to "Mentor EDA",

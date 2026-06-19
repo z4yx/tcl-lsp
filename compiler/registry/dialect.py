@@ -29,6 +29,7 @@ class Dialect(Enum):
     F5_BIGIP = "f5-bigip"
     SYNOPSYS_EDA = "synopsys-eda-tcl"
     CADENCE_EDA = "cadence-eda-tcl"
+    INNOVUS_EDA = "innovus-eda-tcl"
     XILINX_EDA = "xilinx-eda-tcl"
     INTEL_QUARTUS_EDA = "intel-quartus-eda-tcl"
     MENTOR_EDA = "mentor-eda-tcl"

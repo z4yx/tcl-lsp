@@ -306,6 +306,7 @@ function dialectsSection(): HelpSection {
       { name: "f5-iapps / f5-bigip", description: "F5 iApps and BIG-IP config" },
       { name: "synopsys-eda-tcl", description: "Synopsys EDA (DC, PrimeTime, ICC2)" },
       { name: "cadence-eda-tcl", description: "Cadence EDA (Genus, Innovus, Tempus)" },
+      { name: "innovus-eda-tcl", description: "Innovus" },
       { name: "xilinx-eda-tcl", description: "Xilinx/AMD EDA (Vivado, Vitis)" },
       { name: "intel-quartus-eda-tcl", description: "Intel Quartus Prime" },
       { name: "mentor-eda-tcl", description: "Mentor/Siemens EDA (ModelSim, Questa, Calibre)" },

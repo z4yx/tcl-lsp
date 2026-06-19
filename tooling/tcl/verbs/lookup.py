@@ -36,6 +36,7 @@ _HELP_DIALECT_TERMS: dict[str, tuple[str, ...]] = {
         "xcelium",
         "encounter",
     ),
+    "innovus-eda-tcl": ("innovus",),
     "xilinx-eda-tcl": (
         "xilinx",
         "vivado",
