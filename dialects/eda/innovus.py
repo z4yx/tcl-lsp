@@ -468,12 +468,6 @@ def cadence_command_specs() -> tuple[CommandSpec, ...]:
             "Returns a Tcl list of analysis views in the design, according to type",
             "all_analysis_views ?-help? ?-type <string>?",
         ),
-        # man1/all_clocks.1
-        _syn(
-            "all_clocks",
-            "",
-            "all_clocks ?-help?",
-        ),
         # man1/all_connected.1
         _syn(
             "all_connected",
@@ -492,29 +486,11 @@ def cadence_command_specs() -> tuple[CommandSpec, ...]:
             "Returns a Tcl list of all defined delay calculation corner objects in the design",
             "all_delay_corners ?-help? ?-active?",
         ),
-        # man1/all_fanin.1
-        _syn(
-            "all_fanin",
-            "Returns a collection of pins, ports, or cells that exist in the fanin cone of the specified objects",
-            "all_fanin ?-help? ?-hpin? ?-only_cells? ?-startpoints_only? -to {collection | <object_list>} ?-trace_through {case_disable | user_disable | all | clocks | loop_snipped}? ?-view <view_name>? ?-levels <value> | -pin_levels <value>? ?> | >>?",
-        ),
-        # man1/all_fanout.1
-        _syn(
-            "all_fanout",
-            "Returns a collection of pins, ports, or cells that exist in the fanout cone of the specified objects",
-            "all_fanout ?-help? ?-endpoints_only? ?-hpin? ?-only_cells? ?-trace_through {case_disable | user_disable | all | clocks | loop_snipped}? ?-view <view_name>? ?-levels <value> | -pin_levels <value>? {-from {collection | <object_list>} } ?> | >>?",
-        ),
         # man1/all_hold_analysis_views.1
         _syn(
             "all_hold_analysis_views",
             "Returns a Tcl list of all active hold analysis views in the design",
             "all_hold_analysis_views",
-        ),
-        # man1/all_inputs.1
-        _syn(
-            "all_inputs",
-            "Creates a collection of all the input ports in the current design",
-            "all_inputs ?help? ?-clock list_of_<clocks>? ?-no_clocks? ?-edge_triggered? ?-level_sensitive?",
         ),
         # man1/all_instances.1
         _syn(
@@ -534,23 +510,11 @@ def cadence_command_specs() -> tuple[CommandSpec, ...]:
             "Returns a Tcl list of all operating conditions defined for the design",
             "all_op_conds",
         ),
-        # man1/all_outputs.1
-        _syn(
-            "all_outputs",
-            "Creates a collection of all output ports in the current design",
-            "all_outputs ?-help? ?-clock <list_of_clocks>? ?-edge_triggered? ?-level_sensitive?",
-        ),
         # man1/all_rc_corners.1
         _syn(
             "all_rc_corners",
             "Returns a Tcl list of all currently defined RC corner objects in the design",
             "all_rc_corners ?-help? ?-active?",
-        ),
-        # man1/all_registers.1
-        _syn(
-            "all_registers",
-            "",
-            "all_registers ?help? ?-clock {<clock_list>}? ?-cells? ?-rise_clock {<clock_list>}? ?-fall_clock {<clock_list>}? ?-flops | -edge_triggered? ?-no_hierarchy? ?-latches | -level_sensitive? ?-macros? ?-master_slave? ?-data_pins? ?-clock_pins? ?-output_pins? ?-async_pins? ?-slave_clock_pins?",
         ),
         # man1/all_setup_analysis_views.1
         _syn(
@@ -1023,12 +987,6 @@ def cadence_command_specs() -> tuple[CommandSpec, ...]:
             "Checks the floorplan based on the specified tCIC files and reports violations",
             "check_tcic ?-help? ?<filename>? ?-pre_opt? ?-report_area? ?-report_file <filename>? ?-report_unplaced_block? ?-include_all_rules? ?-selected_rules <rule_name>?",
         ),
-        # man1/check_timing.1
-        _syn(
-            "check_timing",
-            "Performs a variety of consistency and completeness checks on the timing constraints specified for a design",
-            "check_timing ?-type <type_list>? ?-verbose? ?-check_only <warning_list>? ?-clock_crossing_output_format {summary | csv}? ?-include_warning <warning_list>? ?-exclude_warning <warning_list>? ?-view <analysis_view_name>? ?<port_or_pin_list>? ?-tcl_list? ?{> | >> } <file_name>?.gz??",
-        ),
         # man1/check_tracks.1
         _syn(
             "check_tracks",
@@ -1479,12 +1437,6 @@ def cadence_command_specs() -> tuple[CommandSpec, ...]:
             "Creates a new skew group within the design",
             "create_ccopt_skew_group ?-help? ?-constrains none| default | all? ?-from_clocks <clock_names>? ?-from_constraint_modes <constraint_mode_names>? ?-from_delay_corners <delay_corner_names>? -name <skew_group_name> ?-rank <rank>? ?-sinks <pins> | -shared_sinks pins | -exclusive_sinks pins | -auto_sinks | -filtered_auto_sinks <pins> | -bal‐ ance_skew_groups <skew_groups>? ?-sources <pins> | -balance_skew_groups <skew_groups>? ?-target_insertion_delay <value>? ?-target_skew <value>?",
         ),
-        # man1/create_clock.1
-        _syn(
-            "create_clock",
-            "Creates a clock object and defines its waveform in the current design",
-            "create_clock -period <period_value> ?-name <clock_name>? ?-waveform <edge_list>? ?-add? ?-comment <string>? ?<sources>?",
-        ),
         # man1/create_constraint_mode.1
         _syn(
             "create_constraint_mode",
@@ -1526,12 +1478,6 @@ def cadence_command_specs() -> tuple[CommandSpec, ...]:
             "create_flexfiller_route_blockage",
             "Generates default congestion model to estimate routing blockages over FlexFillers based on user-specified percentage value for characterizing",
             "create_flexfiller_route_blockage ?-help?",
-        ),
-        # man1/create_generated_clock.1
-        _syn(
-            "create_generated_clock",
-            "Creates a new clock signal from the clock waveform of a given pin in the design, and binds it with the pins or hierarchical pins in the <target_pin_list> argument",
-            "create_generated_clock ?-help? <target_pin_list> ?-add? ?-comment <string>? ?-duty_cycle <percent>? ?-edge_shift <edge_shift_list>? ?-invert? ?-master_clock <source_clock_name>? ?-name <<clock_name>>? -source <source_pin> {?-multiply_by <factor>? ?-divide_by <factor>? ?-edges <edge_list>? ?-combinational?}",
         ),
         # man1/create_hier_view.1
         _syn(
@@ -2032,12 +1978,6 @@ def cadence_command_specs() -> tuple[CommandSpec, ...]:
             "cts_refine_clock_tree_placement",
             "",
             "?-help?",
-        ),
-        # man1/current_design.1
-        _syn(
-            "current_design",
-            "Sets the specified design to be the current design",
-            "current_design ?-help? ?<design_name>?",
         ),
         # man1/current_instance.1
         _syn(
@@ -3644,12 +3584,6 @@ def cadence_command_specs() -> tuple[CommandSpec, ...]:
             "Detects and fills notches, gaps, and holes, and corrects acute angle (45 degree) violations",
             "fillNotch ?-help? ?-area {<x1 y1 x2 y2>}? ?-report <filename>? ?-useExistingDrcResult? ?-useNonDefaultSpacing?",
         ),
-        # man1/filter_collection.1
-        _syn(
-            "filter_collection",
-            "Returns a collection of objects that were filtered from the specified collection of objects based on user-specified criteria (<filter_expression>)",
-            "filter_collection ?-help? <base_collection> {<filter_expression>} ?-nocase? ?-quiet? ?-regexp?",
-        ),
         # man1/find_global.1
         _syn(
             "find_global",
@@ -4028,23 +3962,11 @@ def cadence_command_specs() -> tuple[CommandSpec, ...]:
             "This command returns a list of skew groups whose names match the specified pattern",
             "get_ccopt_skew_groups ?-help? ?<pattern>? ?-regexp?",
         ),
-        # man1/get_cells.1
-        _syn(
-            "get_cells",
-            "Creates a collection of instances in the current design whose name matches the supplied pattern list",
-            "get_cells ?-help? ?-hierarchical? ?-hsc <char>? ?-filter <expr>? ?-leaf? ?-regexp? ?-nocase? ?-quiet? ?<<patterns>> | -of_objects <<object_list>>?",
-        ),
         # man1/get_clock_network_objects.1
         _syn(
             "get_clock_network_objects",
             "Returns the cells or pins that exist in the clock network of the specified clocks",
             "get_clock_network_objects ?-help? ?-clocks <clock_list>? ?-type {cell | pin}?",
-        ),
-        # man1/get_clocks.1
-        _syn(
-            "get_clocks",
-            "Returns a collection of clocks whose names match the supplied patterns, filtered by the filter expression",
-            "get_clocks ?-help? ?-filter <expr>? ?-regexp? ?-nocase? ?-quiet? ?<patterns>?",
         ),
         # man1/get_constant_for_timing.1
         _syn(
@@ -4142,12 +4064,6 @@ def cadence_command_specs() -> tuple[CommandSpec, ...]:
             "",
             "get_lib_cell_leakage_power ?-help? -cell <string> ?-file <string>? ?-stateleakagegrp? ?{-view <string> | -delay_corner <string>} ?-power_domain <string>?? ?-early | -late?",
         ),
-        # man1/get_lib_cells.1
-        _syn(
-            "get_lib_cells",
-            "Creates a collection of library cells from the loaded libraries whose name matches the supplied pattern list",
-            "get_lib_cells ?-help? ?-filter <expr>? ?-regexp? ?-nocase? ?-quiet? {<pattern_list> | -of_objects <object_list>}",
-        ),
         # man1/get_lib_clock_tree_path_delay.1
         _syn(
             "get_lib_clock_tree_path_delay",
@@ -4160,23 +4076,11 @@ def cadence_command_specs() -> tuple[CommandSpec, ...]:
             "Returns a collection of library-level PG pins from the loaded libraries",
             "get_lib_pg_pins ?-help? ?-filter <expr>? {-of_objects <object_list>}",
         ),
-        # man1/get_lib_pins.1
-        _syn(
-            "get_lib_pins",
-            "",
-            "get_lib_pins ?-help? ?-filter expr? ?-regexp? ?-nocase? ?-quiet? {<pattern_list> | -of_objects <object_list>}",
-        ),
         # man1/get_library_set.1
         _syn(
             "get_library_set",
             "Returns a Tcl list of the timing or cdB libraries for the specified library set",
             "get_library_set <libSetName>{-timing | -si | -aocv | -socv}",
-        ),
-        # man1/get_libs.1
-        _syn(
-            "get_libs",
-            "",
-            "get_libs ?-help? ?-filter <expr>? ?-quiet? ?-regexp? ?-nocase? {-of_objects <object_list> | <pattern_list>}",
         ),
         # man1/get_macro_place_constraint.1
         _syn(
@@ -4208,23 +4112,11 @@ def cadence_command_specs() -> tuple[CommandSpec, ...]:
             "Reports the MIS (multi-input switching) analysis settings configured using the set_multi_input_switching_mode command",
             "get_multi_input_switching_mode ?-help? {?-disable_lib_cells? ?-switching_alignment_factor? ?-mis_alignment_mode?}",
         ),
-        # man1/get_nets.1
-        _syn(
-            "get_nets",
-            "Creates a collection of nets in the current design whose name matches the supplied pattern list",
-            "get_nets ?-help? ?-hierarchical? ?-hsc <char>? ?-filter <expr>? ?-regexp? ?-nocase? ?-quiet? ?<patterns> | -of_objects <object_list>?",
-        ),
         # man1/get_oa_default_rule_lib.1
         _syn(
             "get_oa_default_rule_lib",
             "Searches through a specified library (or libraries) to check whether a specified LDRS exists or not",
             "get_oa_default_rule_lib ?-help? ?-rule <rule_name>? ?-libs <lib_list>? ?-verbose?",
-        ),
-        # man1/get_object_name.1
-        _syn(
-            "get_object_name",
-            "Returns the name of the object(s) contained in the specified collections",
-            "get_object_name ?-help? <collection>",
         ),
         # man1/get_op_cond.1
         _syn(
@@ -4267,18 +4159,6 @@ def cadence_command_specs() -> tuple[CommandSpec, ...]:
             "get_physical_info",
             "Gets the physical connection or routing path between IO pads and bumps",
             "get_physical_info ?-help? {-object <string> | -selected } ?-highlight? ?-shapes {RING STRIPE FOLLOWPIN IOWIRE COREWIRE BLOCKWIRE PADRING BLOCKRING FILLWIRE FILLWIREOPC DRCFILL None}? ?-subclass {<subclass_name_list>}? ?-type {connection | routing_path}?",
-        ),
-        # man1/get_pins.1
-        _syn(
-            "get_pins",
-            "Creates a collection of instance pins whose name matches the supplied pattern list",
-            "get_pins ?-help? ?-hierarchical? ?-hsc <char>? ?-filter <expr>? ?-leaf? ?-regexp? ?-nocase? ?-quiet? {<patterns> | -of_objects <object_list>}",
-        ),
-        # man1/get_ports.1
-        _syn(
-            "get_ports",
-            "Creates a collection of ports whose name matches the supplied pattern list",
-            "get_ports ?-help? ?-filter <expr>? ?-regexp? ?-nocase? ?-quiet? ?<patterns> | -of_objects <object_list>?",
         ),
         # man1/get_power.1
         _syn(
@@ -4949,12 +4829,6 @@ def cadence_command_specs() -> tuple[CommandSpec, ...]:
             "group_instance_suffix",
             "",
             "group_instance_suffix suffix",
-        ),
-        # man1/group_path.1
-        _syn(
-            "group_path",
-            "Groups paths in a design, and identifies them with a path group name",
-            "group_path ?-help? ?-comment <string>? -name <path_group_name> ??-from <from_list>? ?-to <to_list>? ?-through <through_list>??",
         ),
         # man1/gui_attach_to_cursor.1
         _syn(
@@ -6638,12 +6512,6 @@ def cadence_command_specs() -> tuple[CommandSpec, ...]:
             "Reports the AOCV derating tables from AOCV libraries",
             "report_aocv_derate ?-help? ?-check_global_derating? ?-clock? ?-data? -file <<string>> ?-list_cell_not_annotated? ?-mesh? ?-voltage <<float>>? ?-design | -cell <<string>>? ?{-delay_corner <<string>> ?-power_domain <<string>>? } | -max | -min? ?-early | -late? ?-rise | -fall?",
         ),
-        # man1/report_area.1
-        _syn(
-            "report_area",
-            "Reports the combined standard cell area in each of the hierarchy modules and the top-level design",
-            "report_area ?-help? ?-detail? ?-hierarchical_instance <hinst_name>? ?-include_physical? ?-min_area <area_per_module>? ?-min_count <instance_count>? ?-out_file <filename>? ?-show_leaf_cells? ?-show_msv_cells? ?-sort_by {name count area}? ?-table_style {horizontal vertical}? ?-summary | -depth <depth_of_hierarchy>?",
-        ),
         # man1/report_bundled_bus.1
         _syn(
             "report_bundled_bus",
@@ -6764,12 +6632,6 @@ def cadence_command_specs() -> tuple[CommandSpec, ...]:
             "This command provides the ability to determine clocks that do not propagate to a particular node in the network, and report the causes for such occurrences",
             "report_clock_propagation ?-help? -clock <clock_list> ?-max_paths <number of paths>? -to <pin_port_list> ?-verbose? ?-view <viewName>? ?> <filename?.gz?>? ?>> <filename?.gz?>?",
         ),
-        # man1/report_clock_timing.1
-        _syn(
-            "report_clock_timing",
-            "",
-            "report_clock_timing ?-absolute_compare? ?-cppr_relative? ?-latency_greater_than? -type ?{skew interclock_skew jitter summary latency cppr_stage_count} ??-launch | -capture? ?-rise | -fall? | ?-histogram ?-histogram_range <interval size>?? ?-logic_level ?-source {clock_root | generated_clock}???? ?-early | -late? ?-clock <clock_list>? ?-from_clock <from_clock_list>? ?-to_clock <to_clock_list>? ?-from <from_list>? ?-to <to_list>? ?-nworst <worst_entries>? ?-greater_than <lower_limit>? ?-view <view_name>? ?-verbose? ?-format <column_list>? ?-tcl_list? ?{> | >>} <filename>?",
-        ),
         # man1/report_clocks.1
         _syn(
             "report_clocks",
@@ -6781,12 +6643,6 @@ def cadence_command_specs() -> tuple[CommandSpec, ...]:
             "report_command_mode",
             "Reports the *Mode options that do not match the default value or the options that have been manually set",
             "report_command_mode ?-help? ?-filter <list_of_commands>? {-non_default | -user}",
-        ),
-        # man1/report_constraint.1
-        _syn(
-            "report_constraint",
-            "Reports constraint information of current design",
-            "report_constraint ?-all_violators? ?-verbose? ?-late? ?-early? ?-em_type {peak | rms | avg | all}? ?-check_type { pulse_width | clock_period | recovery | removal | clock_gating_setup | clock_gating_hold | skew | pulse_clock_max_width | pulse_clock_min_width | electromigration | rail_swing}? ?-clock? ?-connection_class? ?-data? ?-drv_fields {<field_list>}? ?-drv_output_format {txt|csv}? ?-drv_violation_type { max_capacitance | max_transition | max_fanout | min_capacitance | min_transition | min_fanout | pulse_clock_max_transition | pulse_clock_min_transition}? ?-max_pins_per_drv <integer>? ?-retime {aocv | path_slew_propagation | aocv_path_slew_propagation}? ?-retime_mode {path | exhaustive}? ?-view <viewName>? ?-worst_drv_per_net? ?<pin_port_list>? ?{> | >>} filename?.gz??",
         ),
         # man1/report_cppr.1
         _syn(
@@ -7017,12 +6873,6 @@ def cadence_command_specs() -> tuple[CommandSpec, ...]:
             "Reports timing constraints on ports",
             "report_ports ?-type {?input? | ?source_insertion? | ?insertion? | ?clock_root? | ?uncertainty? | ?arrival? | ?required? | ?external? | ?clk_arrival? | ?port_cap? | ?fanout_load? | ?fanout_load_limit? | ?drive_resistance? | ?drive_cell? | ?slew_time? | ?slew_limit? | ?constant? | external_detail | drive_resistance_detail}? ?-include_pins? ?-pins <port_name_list>? ?-view <viewName>? ?> <filename> | -tcl_list?",
         ),
-        # man1/report_power.1
-        _syn(
-            "report_power",
-            "",
-            "report_power ?-block <block_name>? ?-cap? ?-cell {<cell_list>}? ?-cell_type {all | {macro io combinational sequential clock_combinational clock_sequential}}? ?-clock_domain {<clock_domain_list>}? ?-clock_network {all | {<clock_list>}}? ?-count_seq_elements_in_clock_network? ?-die_instance_name <dieinstname>? ?-exclude_cells {<cell_list>}? ?-exclude_cells_file <filename>? ?-exclude_instances {<instance_list>}? ?-exclude_instances_file <filename>? ?-instances {<instance_list>}? ?-hierarchy {all | <hierarchy_level}>? ?-hierarchical_instances {<hierarchy_inst_list>}? ?-leakage? ?-net ?-nworst<number_of_nets>?? ?-no_wrap? ?-outfile <filename>? ?-pg_net {all | <pg_net_name_list>}? ?-power_domain {all | {<power_domain_list>}<}>? ?-sort {internal | switching | leakage | total}? ?-threshold <value>? ?-view <view_name>? ?-threshold_voltage_group { all | <group_name>}? ?-clock_gating_efficiency? ?-register_gating_efficiency? ?-cluster_gating_efficiency? ?-thermal_leakage_temp {<temp_list>}? ?-thermal_power_map_file <file_name>? ?-thermal_power_map_tile {<Xint> <Yint>}? ?-thermal_power_map_format {simple | stack }? ?-pg_pin? ?-thermal_conductivity_inputs <file_name>? ?-output <directory>? ?-o <directory>? ?-report_prefix <prefix>? ?-toggle_rate? ?-format { simple | detailed }? ?-comb_seq_power? ?-group_type <user_defined_group_name>? ?-distribute? ?-print_memory_power? ?-cap_unit <unit>? ?-cell_list_file <filename>? ?-float_precision <value>? ?-inst_list_file <filename>? ?-power_db_directory <directory>? ?-power_unit <unit>? ?-time_unit <unit>? ?-power_density_tiles <value>? ?-power_density_tiles_row_col {<value1> <value2>}? ?-power_density_tiles_size {<value1> <value2>}? ?-compress <compression_ratio>? ?-stat? ?-time_based_report? ?-thermal_power_map_header_include_file <filename>? ?-thermal_leakage_temperature_scale_table_file <filename>? ?-thermal_leakage_temperature_scale_table {$<temp1> $<scalefactor1> $<temp2> $<scalefactor2> $<temp3> $<scalefactor3> .....}? ?-thermal_material_file <filename>? ?-thermal_power_map_SI_unit {true | false}? ?-thermal_power_map_powertable_tile {<Xint> <Yint>}? ?-thermal_power_map_densitytable_tile {<Xint> <Yint>}? ?-thermal_power_map_format_version {new|default}? ?-thermal_power_map_bottom_layer <layer_name>? ?-thermal_power_map_top_layer <layer_name>? ?-use_geometry_cell_size {true | false}?",
-        ),
         # man1/report_power_rail_results.1
         _syn(
             "report_power_rail_results",
@@ -7131,12 +6981,6 @@ def cadence_command_specs() -> tuple[CommandSpec, ...]:
             "report_statistical_timing_derate_factors",
             "Generates design specific OCV factor",
             "report_statistical_timing_derate_factors -type {arrival_time_based | slack_time_based} -ssta_view <ssta_view_name> -sta_view <sta_view_name> -path_group <groupname_list>",
-        ),
-        # man1/report_timing.1
-        _syn(
-            "report_timing",
-            "",
-            "report_timing ?-help? ?-analysis_summary_csv_extended_file <<string>>? ?-analysis_summary_csv_file <<string>>? ?-analysis_summary_file <<string>>? ?-check_clocks? ?-check_type {setup hold clock_gating_setup clock_gating_hold clock_gating_pulse_width data_setup data_hold recovery re‐ moval pulse_width clock_period clock_separation skew no_change_setup no_change_hold max_delay min_delay}? ?-debug {unconstrained | time_borrow | cppr_point | vt_skew}? ?-delay_limit <float>? ?-derate_summary? ?-gui? ?-format <column_list>? ?-hpin? ?-max_slack <float>? ?-min_slack <float>? ?-net? ?-output_format {text | csv | gtd | binary}? ?-path_exceptions {applied ignored all}? ?-path_group <groupname_list>? ?-path_type {end summary full full_clock end_slack_only summary_slack_only}? ?-retime {aocv path_slew_propagation aocv_path_slew_propagation}? ?-retime_delaycal_pins <<pin_list>>? ?-retime_format {manual | retime_compare | retime_replace}? ?-retime_mode {path exhaustive}? ?-skip_io_paths? ?-unique_pins? ?-view <viewName>? ?-worst_rc_corner? ?> <filename?.gz?>? ?>> <filename?.gz?>? ?-late | -early? ?-rise | -fall? ?-begin_end_pair | ??-max_paths <integer>? ?-nworst <integer>??? ?-unconstrained | -point_to_point? ?-collection | -machine_readable | -tcl_list? ?-not_through <object_list> | -not_rise_through <object_list> | -not_fall_through <object_list>? ??-from <pin_list> | -from_rise <pin_list> | -from_fall <pin_list>? ?-clock_from <clk_signame_list> ?-edge_from {lead trail}?? ?-through <pin_list> | -through_rise <pin_list> | -through_fall <pin_list>? ?-to <pin_list> | -to_rise <pin_list> | -to_fall <pin_list>? ?-clock_to <clk_signame_list> ?-edge_to {lead trail}???",
         ),
         # man1/report_timing_derate.1
         _syn(
@@ -8519,12 +8363,6 @@ def cadence_command_specs() -> tuple[CommandSpec, ...]:
             "Limits the minimum AOCV stage depth in graph-based analysis (GBA) mode",
             "set_aocv_thresholds ?-help? ?-min_stage_count_setup <<int>>? ?-min_stage_count_hold <<int>>? ?-reset? ?-slack_pruning_threshold <<float>>? -view <<list_of_views>>",
         ),
-        # man1/set_case_analysis.1
-        _syn(
-            "set_case_analysis",
-            "",
-            "set_case_analysis ?-help? {0 | 1 | zero | one | rising | falling | rise | fall | non_switching} <list_of_ports_or_pins>",
-        ),
         # man1/set_ccopt_preserved_clock_tree_port.1
         _syn(
             "set_ccopt_preserved_clock_tree_port",
@@ -8567,35 +8405,11 @@ def cadence_command_specs() -> tuple[CommandSpec, ...]:
             "Specifies or overrides the default setup and hold values for clock gating checks",
             "set_clock_gating_check ?-help? ?<object_list>? ?-fall? ?-hold <hold_value>? ?-rise? ?-setup <setup_value>? ?-high | -low?",
         ),
-        # man1/set_clock_groups.1
-        _syn(
-            "set_clock_groups",
-            "Defines clock groups with specified clock definitions",
-            "set_clock_groups ?-name <name>? ?-comment <string>? ?-logically_exclusive? | ?-physically_exclusive? | ??-asynchronous? ?-allow_paths?? ?-group <clock_list>?",
-        ),
-        # man1/set_clock_latency.1
-        _syn(
-            "set_clock_latency",
-            "Specifies ideal internal clock latency and external clock arrival delay",
-            "set_clock_latency ?-source ?-early | -late?? ?-rise? ?-fall? ?-jitter <jitter_val>? ?-clock <clock_list>? ?-min? ?-max? ?-clock_gate? <latency> <pin_or_clock_list>",
-        ),
         # man1/set_clock_sense.1
         _syn(
             "set_clock_sense",
             "Selects which phase of the clock to filter at the specified point",
             "set_clock_sense ?-help? <pin_or_port_list> ?-clocks <clock_list>? {-positive | -negative | -stop_propagation | -logical_stop_propagation | -stop <type_list>}",
-        ),
-        # man1/set_clock_transition.1
-        _syn(
-            "set_clock_transition",
-            "Specifies the transition time of sequential endpoints of the ideal clock network",
-            "set_clock_transition ?-rise? ?-fall? ?-min? ?-max? ?-min |-max? <slew_time> <clock_list>",
-        ),
-        # man1/set_clock_uncertainty.1
-        _syn(
-            "set_clock_uncertainty",
-            "Specifies the clock uncertainty (skew) on the clock network",
-            "set_clock_uncertainty <uncertainty_value > ?-setup? ?-hold? ?-half_cycle_jitter | -full_cycle_jitter? ?-rise | -fall? { {-from | -rise_from | -fall_from} <clksig_from_list> {-to | -rise_to | -fall_to} <clksig_to_list> | <pin_or_clock_list> }",
         ),
         # man1/set_ctd_win_title.1
         _syn(
@@ -8633,41 +8447,17 @@ def cadence_command_specs() -> tuple[CommandSpec, ...]:
             "",
             "set_disable_clock_gating_check <object_list>",
         ),
-        # man1/set_disable_timing.1
-        _syn(
-            "set_disable_timing",
-            "Disables timing propagation through the specified arcs, or a collection of instance-specific arcs that are created using the get_arcs command",
-            "set_disable_timing ?-from <pin_name> -to <pin_name>? <object_list>",
-        ),
-        # man1/set_dont_touch.1
-        _syn(
-            "set_dont_touch",
-            "Prevents the specified object from being modified during optimization",
-            "set_dont_touch <object_list> ?true | false?",
-        ),
         # man1/set_dont_touch_network.1
         _syn(
             "set_dont_touch_network",
             "Prevents the combinational path connected to the given clocks, pins, or ports from being modified",
             "set_dont_touch_network ?-help? <obj_list>?-no_propagate?",
         ),
-        # man1/set_dont_use.1
-        _syn(
-            "set_dont_use",
-            "Prevents the specified design, hierarchical module, or library cells from being used during optimization",
-            "set_dont_use ?-help? <object_list>?true | false?",
-        ),
         # man1/set_drive.1
         _syn(
             "set_drive",
             "Sets the drive resistance on the specified input and/or bidirectional ports of the top cell",
             "set_drive ?-rise? ?-fall? ?-max? ?-min? <resistance_value> <port_list>",
-        ),
-        # man1/set_driving_cell.1
-        _syn(
-            "set_driving_cell",
-            "Models the drive capability of an external driver connected to the input port",
-            "set_driving_cell ?-library <library_name>? -lib_cell <cell_name> ?-pin <pin_name>? ?-from_pin <from_pin_name>? ?-rise? ?-fall? ?-min? ?-max? ?-multiply_by <factor>? ?-no_design_rule? ?-input_transition_rise <rise_slew_value>? ?-input_transition_fall <fall_slew_value>? <port_list>",
         ),
         # man1/set_dynamic_power_simulation.1
         _syn(
@@ -8680,12 +8470,6 @@ def cadence_command_specs() -> tuple[CommandSpec, ...]:
             "set_dynamic_rail_simulation",
             "An optional command to set the parameters for dynamic rail analysis",
             "set_dynamic_rail_simulation ?-help? ?-start <value>? ?-stop <value>? ?-resolution <value>? ?-reset? ?-auto_repeat?",
-        ),
-        # man1/set_false_path.1
-        _syn(
-            "set_false_path",
-            "Identifies false paths in a design, and breaks or disables specific instance timing arcs in a design",
-            "set_false_path ?-hold | -setup? ?-rise? ?-fall? {?{-from | -rise_from | -fall_from} <from_list>? ?{-through | -rise_through | -fall_through} <through_list>? ?{-to | -rise_to | -fall_to} <to_list>?}",
         ),
         # man1/set_fanout_load.1
         _syn(
@@ -8717,35 +8501,11 @@ def cadence_command_specs() -> tuple[CommandSpec, ...]:
             "Saves the specified UDM variable to the .global file",
             "set_global_always_keep ?-help?",
         ),
-        # man1/set_ideal_latency.1
-        _syn(
-            "set_ideal_latency",
-            "Specifies the ideal latency to use for input or output leaf-cell pins and top-level ports that are part of an ideal network",
-            "set_ideal_latency ?-help? ?-min? ?-max? ?-rise? ?-fall? <latency_value> <object_list>",
-        ),
-        # man1/set_ideal_network.1
-        _syn(
-            "set_ideal_network",
-            "Identifies driver pins or ports as sources of an ideal network",
-            "set_ideal_network <object_list> ?-no_propagate?",
-        ),
         # man1/set_ideal_transition.1
         _syn(
             "set_ideal_transition",
             "Specifies the ideal transition to use for input or output leaf-cell pins and top-level ports that are part of an ideal network",
             "set_ideal_transition ?-min? ?-max? ?-rise? ?-fall? <transition_time> <object_list>",
-        ),
-        # man1/set_input_delay.1
-        _syn(
-            "set_input_delay",
-            "Defines the arrival time relative to a clock edge on input ports or internal input pins",
-            "set_input_delay ?-clock <clock_name>? ?-clock_fall? ?-rise? ?-fall? ?-max? ?-min? ?-add_delay? ?-network_latency_included? ?-source_latency_included? ?-reference_pin <pin_name>? ?-level_sensitive? <delay_value> <port_or_pin_list>",
-        ),
-        # man1/set_input_transition.1
-        _syn(
-            "set_input_transition",
-            "Specifies the slew time for a port on the top level module",
-            "set_input_transition ?-help? ?-min? ?-max? ?-rise? ?-fall? <transition_time> <port_list>",
         ),
         # man1/set_inst_temperature_file.1
         _syn(
@@ -8771,12 +8531,6 @@ def cadence_command_specs() -> tuple[CommandSpec, ...]:
             "Sets the threshold trip-points used for delay calculation to and from the primary I/Os",
             "set_io_thresholds ?-slew_lower_threshold_pct <pctValue>? ?-slew_upper_threshold_pct <pctValue>? ?-input_threshold_pct <pctValue>? ?-output_threshold_pct <pctValue>? ?-slew_lower_threshold_pct_rise <pctValue>? ?-slew_lower_threshold_pct_fall <pctValue>? ?-slew_upper_threshold_pct_rise <pctValue>? ?-slew_upper_threshold_pct_fall <pctValue>? ?-input_threshold_pct_rise <pctValue>? ?-input_threshold_pct_fall <pctValue>? ?-output_threshold_pct_rise <pctValue>? ?-output_threshold_pct_fall <pctValue>?",
         ),
-        # man1/set_load.1
-        _syn(
-            "set_load",
-            "Sets the specified capacitance on the defined ports (or nets) of the top cell",
-            "set_load ?-max? ?-min? ?-pin_load? ?-wire_load? ?-subtract_pin_load? <capacitance_value> <object_list>",
-        ),
         # man1/set_logic_one.1
         _syn(
             "set_logic_one",
@@ -8795,35 +8549,11 @@ def cadence_command_specs() -> tuple[CommandSpec, ...]:
             "Enables you to specify the constraints for placing the macros and standard cells concurrently",
             "set_macro_place_constraint ?-help? ?<array elements>? ?-array <array_name> ?-common_hier <name>??-valid_group_orients {R0 MX MY}? ?-place_order {horizontal vertical}?? ?{-insts <string> | -all_macros } {-orientation <string>} ?-common_hier <name>?? ?-cells <string> {-cell_obs <string> | -track_adjustment <string>}? ?-cpg <string>? ??-max_io_pin_group_keep_out {<depth_value> ?<side_value>?}? ?-forbidden_space_to_core {<unified_value> | <horizontal_value vertical_value>}? ?-forbidden_space_to_macro {<unified_value> | <horizontal_value vertical_value>}? ?-min_space_to_core {<unified_value> | <horizontal_value vertical_value>}? ?-min_space_to_macro {<unified_value> | <horizontal_value vertical_value>}? ?-parallel_run_length {<unified_value> | <vertical_value horizontal_value>}? ?-power_domain_as_core {true | false}? ?-horizontal_stacking {<max_macro_stack_length min_space_between_macro_stack max_space_between_macros>}? ?-vertical_stacking {<max_macro_stack_length min_space_between_macro_stack max_space_between_macros>}? ?-honor_strict_spacing_constraint {true | false}? ?-avoid_abut_macro_edge_with_pins {true | false}? ?-same_length_site <integer>? ?-pg_resource_model {<M1 value1 M2 value2 …>}? ?-macro_corner_keepout {<double_endcap_width> <double_endcap_height>}? ?-halo_sharing {true | false}? ?-parallel_run_length_for_stacking {<unified_value> | <vertical_value horizontal_value>}??",
         ),
-        # man1/set_max_capacitance.1
-        _syn(
-            "set_max_capacitance",
-            "Sets the maximum capacitance limit on the specified instance pin, ports of the top cell, the speci‐ fied designs, and/or clock waveforms",
-            "set_max_capacitance ?-help? <capacitance_limit> <object_list> ?-clock_path? ?-data_path? ?-fall? ?-override? ?-rise?",
-        ),
-        # man1/set_max_delay.1
-        _syn(
-            "set_max_delay",
-            "Specifies a maximum delay for a timing path",
-            "set_max_delay",
-        ),
-        # man1/set_max_fanout.1
-        _syn(
-            "set_max_fanout",
-            "Sets the maximum fanout load limit constraint on the specified instance pin, ports of the top cell, the specified designs, and/or clock waveforms",
-            "set_max_fanout ?-help? <fanout_limit> <object_list> ?-override?",
-        ),
         # man1/set_max_time_borrow.1
         _syn(
             "set_max_time_borrow",
             "Specifies the maximum time that can be borrowed by one stage from the next logic stage following a latch to meet timing constraints",
             "set_max_time_borrow ?-help? <borrow_value> <object_list>?-interface?",
-        ),
-        # man1/set_max_transition.1
-        _syn(
-            "set_max_transition",
-            "Sets the maximum slew time limit (transition) on the specified instance pin, ports of the top cell, and/or clock waveforms",
-            "set_max_transition ?-help? <transition_limit> <object_list> ?-clock_path? ?-data_path? ?-fall? ?-override? ?-rise?",
         ),
         # man1/set_message.1
         _syn(
@@ -8850,12 +8580,6 @@ def cadence_command_specs() -> tuple[CommandSpec, ...]:
             "set_min_capacitance",
             "",
             "set_min_capacitance ?-help? <capacitance_limit> <object_list> ?-clock_path? ?-data_path? ?-fall? ?-override? ?-rise?",
-        ),
-        # man1/set_min_delay.1
-        _syn(
-            "set_min_delay",
-            "Specifies a minimum delay for a timing path",
-            "set_min_delay <value> ?-combinational_from_to | -ignore_clock_latency? ?{-from |-rise_from | -fall_from} <from_list>? ?-no_segment? ?{-through | -rise_through | -fall_through} <through_list>? ?{-to | -rise_to | -fall_to} <to_list>? ?-rise? ?-fall? ?-comment <string>?",
         ),
         # man1/set_min_fanout.1
         _syn(
@@ -8908,11 +8632,6 @@ def cadence_command_specs() -> tuple[CommandSpec, ...]:
         # man1/set_multicycle_path.1
         #   WARNING: unmatched closing bracket ']' at position 353
         #   WARNING: unmatched closing bracket ']' at position 355
-        _syn(
-            "set_multicycle_path",
-            "Specifies multicycle paths between specific timing paths in a design or between clock domains",
-            "set_multicycle_path ?-help? <<number_of_cycles>> ?-comment <<string>>? ?-fall? ?-fall_through <<through_list>>? ?-hold? ?-rise? ?-rise_through <<through_list>>? ?-setup? ?-through <<through_list>>? ?-start | -end? ?-from <<from_list>> | -rise_from <<from_list>> | -fall_from <<from_list>>? ?-to <<to_list>?> | -rise_to <<to_list>> | -fall_to <<to_list>?>?",
-        ),
         # man1/set_mutex_condition.1
         _syn(
             "set_mutex_condition",
@@ -8948,12 +8667,6 @@ def cadence_command_specs() -> tuple[CommandSpec, ...]:
             "set_offchip_package_trace",
             "Specifies to include RDL0 (off-chip package trace) resistance effects during the static and dynamic rail analysis",
             "set_offchip_package_trace ?-help? -mapping <mapping_file> -name <switched_name> -ploc_file_list <list_of_bump_location_files> ?-reset? -spice <spice_model_name> ?-subckt <subcircuitname>?",
-        ),
-        # man1/set_output_delay.1
-        _syn(
-            "set_output_delay",
-            "",
-            "set_output_delay -clock <clock_name> ?-clock_fall? ?-rise? ?-fall? ?-max? ?-min? ?-add_delay? ?-network_latency_included? ?-source_latency_included? ?-reference_pin <pin_name>? ?-level_sensitive? ?-group_path <group_name>? <delay_value> <port_or_pin_list>",
         ),
         # man1/set_package.1
         _syn(
@@ -9064,12 +8777,6 @@ def cadence_command_specs() -> tuple[CommandSpec, ...]:
             "set_proc_verbose",
             "Makes a procedure verbose, when the procedure is called for execution",
             "set_proc_verbose ?-help? {?<procedure_name> ?-quiet?? | ?-report?}",
-        ),
-        # man1/set_propagated_clock.1
-        _syn(
-            "set_propagated_clock",
-            "Puts the propagated_clock assertion on the specified pin, port, or clock object",
-            "set_propagated_clock <pin_clock_list>",
         ),
         # man1/set_property.1
         _syn(
@@ -9347,18 +9054,6 @@ def cadence_command_specs() -> tuple[CommandSpec, ...]:
             "set_well_tap_mode",
             "Controls the behavior of addWellTap command",
             "set_well_tap_mode ?-help? ?-reset? ?-abut_boundary_tap_distance {{<cell1 cell2 distance1>} {<cell1 cell3 distance1>} {<cell2 cell3 distance3>} … }? ?-antenna_tap_break_cell <cell_list>? ?-antenna_tap_cell <cell_list>? ?-antenna_tap_left_cell <cell_list>? ?-antenna_tap_pitch <microns>? ?-antenna_tap_right_cell <cell_list>? ?-antenna_tap_right_top_edge_cell <cell_list>? ?-avoid_vertical_well_abutment {none|ntap|ptap|all_tap}? ?-avoidAbutment {true|false}? ?-block_boundary_only {true | false}?? ?-bottom_tap_cell cellName? ?-bottom_termination_cell <cellList>? ?-cell <cellName>? ?-channel_offset <offset_value>? ?-check_channel {true|false}? ?-column_cell <cellList>? ?-create_rows {true|false}? ?-disable_check_zone_at_boundary {none|vdd|vss|both}? ?-inRowOffset <offset_value>? ?-insert_cells <cellName rule dense_layer dense_rule boundary_layer boundary_rule>? ?-rule microns? ?-siteOffset <number_of_sites>? ?-tap_function_cells <cell_list>? ?-tap_termination_alignment {true|false}? ?-termination_align {left|right|center}? ?-termination_cell <cellList>? ?-top_tap_cell <cellName>? ?-top_termination_cell <cellList>? ?-vertical_boundary_spacing <spacing_with_well_tap>? ?-well_cut_cell <cellList>?",
-        ),
-        # man1/set_wire_load_mode.1
-        _syn(
-            "set_wire_load_mode",
-            "Controls how the software searches through the design hierarchy to find the appropriate wire load model for a net, or a hierarchical part of a net",
-            "set_wire_load_mode ?-help? {top | enclosed | segmented}",
-        ),
-        # man1/set_wire_load_model.1
-        _syn(
-            "set_wire_load_model",
-            "Specifies the wire load model to be used from the technology library, and sets the wire load model on the design or on a hierarchical object (instance)",
-            "set_wire_load_model ?-help? ?<list_of_instances_or_ports>? ?-library <library_name>? ?-max? ?-min? -name <wireload_model>",
         ),
         # man1/set_wire_load_selection_group.1
         _syn(
@@ -10162,12 +9857,6 @@ def cadence_command_specs() -> tuple[CommandSpec, ...]:
             "signoffTimeDesign",
             "Runs signoff timing analysis using extraction (Quantus) and Tempus in batch mode, and generates timing reports and ECO DB for each view",
             "signoffTimeDesign ?-help? ?-noEcoDB? ?-noExpandedViews? ?-outDir <string>? ?-prefix <string>? ?-reportFullClockPath? ?-reportOnly?",
-        ),
-        # man1/sizeof_collection.1
-        _syn(
-            "sizeof_collection",
-            "Returns the total number of objects contained in the specified collection",
-            "sizeof_collection ?-help? <collection>",
         ),
         # man1/skewClock.1
         _syn(
